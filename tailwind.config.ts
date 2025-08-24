@@ -52,6 +52,19 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Industrial IoT Colors
+				'phase-r': 'hsl(var(--phase-r))',
+				'phase-y': 'hsl(var(--phase-y))',
+				'phase-b': 'hsl(var(--phase-b))',
+				'motor-on': 'hsl(var(--motor-on))',
+				'motor-off': 'hsl(var(--motor-off))',
+				'timer-bg': 'hsl(var(--timer-bg))',
+				'settings-panel': 'hsl(var(--settings-panel))',
+				'settings-alt-panel': 'hsl(var(--settings-alt-panel))',
+				'input-field': 'hsl(var(--input-field))',
+				'status-active': 'hsl(var(--status-active))',
+				'status-inactive': 'hsl(var(--status-inactive))',
+				'status-warning': 'hsl(var(--status-warning))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -67,6 +80,20 @@ export default {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			boxShadow: {
+				'industrial': 'var(--shadow-industrial)',
+				'panel': 'var(--shadow-panel)',
+				'button': 'var(--shadow-button)'
+			},
+			backgroundImage: {
+				'gradient-panel': 'var(--gradient-panel)',
+				'gradient-alt-panel': 'var(--gradient-alt-panel)',
+				'gradient-card': 'var(--gradient-card)'
+			},
+			transitionProperty: {
+				'smooth': 'var(--transition-smooth)',
+				'fast': 'var(--transition-fast)'
 			},
 			keyframes: {
 				'accordion-down': {

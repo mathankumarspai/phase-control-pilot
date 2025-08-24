@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 240 5% 96%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -35,6 +35,36 @@ All colors MUST be HSL.
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
+
+    /* Industrial IoT Color System */
+    --phase-r: 0 72% 51%;
+    --phase-y: 45 93% 47%;
+    --phase-b: 217 91% 60%;
+    --motor-on: 142 71% 45%;
+    --motor-off: 0 72% 51%;
+    --timer-bg: 217 91% 60%;
+    --settings-panel: 84 81% 44%;
+    --settings-alt-panel: 48 96% 53%;
+    --input-field: 328 73% 77%;
+    
+    /* Status Colors */
+    --status-active: 142 71% 45%;
+    --status-inactive: 0 72% 51%;
+    --status-warning: 45 93% 47%;
+    
+    /* Industrial Gradients */
+    --gradient-panel: linear-gradient(135deg, hsl(var(--settings-panel)), hsl(84 81% 48%));
+    --gradient-alt-panel: linear-gradient(135deg, hsl(var(--settings-alt-panel)), hsl(48 96% 57%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(240 5% 98%));
+    
+    /* Industrial Shadows */
+    --shadow-industrial: 0 4px 12px -2px hsl(222.2 84% 4.9% / 0.1);
+    --shadow-panel: 0 2px 8px -1px hsl(222.2 84% 4.9% / 0.15);
+    --shadow-button: 0 2px 4px -1px hsl(222.2 84% 4.9% / 0.2);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease-out;
 
     --radius: 0.5rem;
 
