@@ -62,6 +62,8 @@ export default {
 				'settings-panel': 'hsl(var(--settings-panel))',
 				'settings-alt-panel': 'hsl(var(--settings-alt-panel))',
 				'input-field': 'hsl(var(--input-field))',
+				'cosmic-primary': 'hsl(var(--cosmic-primary))',
+				'cosmic-secondary': 'hsl(var(--cosmic-secondary))',
 				'status-active': 'hsl(var(--status-active))',
 				'status-inactive': 'hsl(var(--status-inactive))',
 				'status-warning': 'hsl(var(--status-warning))',
@@ -84,12 +86,20 @@ export default {
 			boxShadow: {
 				'industrial': 'var(--shadow-industrial)',
 				'panel': 'var(--shadow-panel)',
-				'button': 'var(--shadow-button)'
+				'button': 'var(--shadow-button)',
+				'card': 'var(--shadow-card)',
+				'gauge': 'var(--shadow-gauge)',
+				'glow': 'var(--shadow-glow)'
 			},
 			backgroundImage: {
 				'gradient-panel': 'var(--gradient-panel)',
 				'gradient-alt-panel': 'var(--gradient-alt-panel)',
-				'gradient-card': 'var(--gradient-card)'
+				'gradient-card': 'var(--gradient-card)',
+				'gradient-phase-r': 'var(--gradient-phase-r)',
+				'gradient-phase-y': 'var(--gradient-phase-y)',
+				'gradient-phase-b': 'var(--gradient-phase-b)',
+				'gradient-motor': 'var(--gradient-motor)',
+				'gradient-cosmic': 'var(--gradient-cosmic)'
 			},
 			transitionProperty: {
 				'smooth': 'var(--transition-smooth)',
