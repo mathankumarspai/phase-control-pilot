@@ -31,18 +31,20 @@ export const Dashboard = () => {
         <p className="text-muted-foreground">Industrial IoT Monitoring System</p>
       </header>
 
-      {/* Phase Displays */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+      {/* Phase Displays - Always in parallel/row */}
+      <div className="grid grid-cols-3 gap-2 mb-6">
         <PhaseDisplay phase="R" color="phase-r" data={phaseData.r} />
         <PhaseDisplay phase="Y" color="phase-y" data={phaseData.y} />
         <PhaseDisplay phase="B" color="phase-b" data={phaseData.b} />
       </div>
 
-      {/* Motor Control */}
-      <MotorControl 
-        isOn={motorStatus} 
-        onToggle={setMotorStatus} 
-      />
+      {/* Motor Control - Centered */}
+      <div className="flex justify-center mb-6">
+        <MotorControl 
+          isOn={motorStatus} 
+          onToggle={setMotorStatus} 
+        />
+      </div>
 
       {/* Additional Switches */}
       <AdditionalSwitches

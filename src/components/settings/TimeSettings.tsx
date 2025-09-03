@@ -1,81 +1,100 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
+import { CircularGauge } from "@/components/ui/circular-gauge";
+import { Clock } from "lucide-react";
 
 interface TimeSettingsData {
-  cyclicOnTime: string;
-  cyclicOffTime: string;
-  autoTime: string;
-  deltaTime: string;
+  cyclicOnTime: number;
+  cyclicOffTime: number;
+  autoTime: number;
+  deltaTime: number;
 }
 
 export const TimeSettings = () => {
   const [settings, setSettings] = useState<TimeSettingsData>({
-    cyclicOnTime: "00",
-    cyclicOffTime: "00",
-    autoTime: "00",
-    deltaTime: "00"
+    cyclicOnTime: 7,
+    cyclicOffTime: 8,
+    autoTime: 10,
+    deltaTime: 2
   });
 
-  const updateSetting = (key: keyof TimeSettingsData, value: string) => {
+  const updateSetting = (key: keyof TimeSettingsData, value: number) => {
     setSettings(prev => ({ ...prev, [key]: value }));
   };
 
   return (
-    <Card className="p-6 bg-gradient-panel text-black shadow-panel">
-      <h3 className="text-xl font-bold mb-6 text-center">Time Settings</h3>
+    <Card className="p-6 bg-settings-panel text-black shadow-panel rounded-3xl">
+      <div className="flex items-center space-x-3 mb-6">
+        <div className="w-10 h-10 bg-settings-alt-panel rounded-full flex items-center justify-center">
+          <Clock className="h-5 w-5 text-white" />
+        </div>
+        <h3 className="text-xl font-bold">Time Settings</h3>
+      </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-card p-4 rounded-lg border-2 border-black">
-          <Label className="text-sm font-semibold mb-2 block">Cyclic ON Time</Label>
-          <div className="flex items-center space-x-2">
-            <Input
-              value={settings.cyclicOnTime}
-              onChange={(e) => updateSetting("cyclicOnTime", e.target.value)}
-              className="bg-input-field text-center font-bold text-black placeholder:text-gray-600"
-              placeholder="00"
-            />
-            <span className="font-semibold">Min</span>
+      <div className="bg-card rounded-2xl p-6 shadow-card">
+        {/* Slider Settings */}
+        <div className="space-y-6 mb-8">
+          <div>
+            <Label className="text-sm font-semibold mb-3 block">Cyclic ON Time</Label>
+            <div className="px-4">
+              <Slider
+                value={[settings.cyclicOnTime]}
+                onValueChange={(value) => updateSetting("cyclicOnTime", value[0])}
+                max={10}
+                step={1}
+                className="w-full"
+              />
+              <div className="flex justify-between text-sm text-muted-foreground mt-2">
+                <span>0</span>
+                <span>10</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <Label className="text-sm font-semibold mb-3 block">Cyclic OFF Time</Label>
+            <div className="px-4">
+              <Slider
+                value={[settings.cyclicOffTime]}
+                onValueChange={(value) => updateSetting("cyclicOffTime", value[0])}
+                max={10}
+                step={1}
+                className="w-full"
+              />
+              <div className="flex justify-between text-sm text-muted-foreground mt-2">
+                <span>0</span>
+                <span>10</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="bg-card p-4 rounded-lg border-2 border-black">
-          <Label className="text-sm font-semibold mb-2 block">Cyclic OFF Time</Label>
-          <div className="flex items-center space-x-2">
-            <Input
-              value={settings.cyclicOffTime}
-              onChange={(e) => updateSetting("cyclicOffTime", e.target.value)}
-              className="bg-input-field text-center font-bold text-black placeholder:text-gray-600"
-              placeholder="00"
-            />
-            <span className="font-semibold">Min</span>
-          </div>
-        </div>
-
-        <div className="bg-card p-4 rounded-lg border-2 border-black">
-          <Label className="text-sm font-semibold mb-2 block">Auto Time</Label>
-          <div className="flex items-center space-x-2">
-            <Input
+        {/* Circular Gauges */}
+        <div className="grid grid-cols-2 gap-6">
+          <div className="text-center">
+            <Label className="text-sm font-semibold mb-3 block">Auto Time</Label>
+            <CircularGauge
               value={settings.autoTime}
-              onChange={(e) => updateSetting("autoTime", e.target.value)}
-              className="bg-input-field text-center font-bold text-black placeholder:text-gray-600"
-              placeholder="00"
+              max={60}
+              size={100}
+              color="#3b82f6"
+              unit="sec"
+              onChange={(value) => updateSetting("autoTime", value)}
             />
-            <span className="font-semibold">Sec</span>
           </div>
-        </div>
 
-        <div className="bg-card p-4 rounded-lg border-2 border-black">
-          <Label className="text-sm font-semibold mb-2 block">Delta Time</Label>
-          <div className="flex items-center space-x-2">
-            <Input
+          <div className="text-center">
+            <Label className="text-sm font-semibold mb-3 block">Delta Time</Label>
+            <CircularGauge
               value={settings.deltaTime}
-              onChange={(e) => updateSetting("deltaTime", e.target.value)}
-              className="bg-input-field text-center font-bold text-black placeholder:text-gray-600"
-              placeholder="00"
+              max={60}
+              size={100}
+              color="#3b82f6"
+              unit="sec"
+              onChange={(value) => updateSetting("deltaTime", value)}
             />
-            <span className="font-semibold">Sec</span>
           </div>
         </div>
       </div>

@@ -1,92 +1,99 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
+import { Plug } from "lucide-react";
 
 interface VoltageSettingsData {
-  threePhaseLow: string;
-  threePhaseHigh: string;
-  twoPhaseLow: string;
-  twoPhaseHigh: string;
-  differentVoltage: string;
+  threePhase: { low: number; high: number };
+  twoPhase: { low: number; high: number };
+  differentVoltage: number;
 }
 
 export const VoltageSettings = () => {
   const [settings, setSettings] = useState<VoltageSettingsData>({
-    threePhaseLow: "000",
-    threePhaseHigh: "000",
-    twoPhaseLow: "000",
-    twoPhaseHigh: "000",
-    differentVoltage: "00"
+    threePhase: { low: 350, high: 450 },
+    twoPhase: { low: 200, high: 250 },
+    differentVoltage: 415
   });
 
-  const updateSetting = (key: keyof VoltageSettingsData, value: string) => {
-    setSettings(prev => ({ ...prev, [key]: value }));
+  const updateRange = (key: "threePhase" | "twoPhase", values: number[]) => {
+    setSettings(prev => ({
+      ...prev,
+      [key]: { low: values[0], high: values[1] }
+    }));
+  };
+
+  const updateDifferentVoltage = (value: number) => {
+    setSettings(prev => ({ ...prev, differentVoltage: value }));
   };
 
   return (
-    <Card className="p-6 bg-gradient-panel text-black shadow-panel">
-      <h3 className="text-xl font-bold mb-6 text-center">Voltage Settings</h3>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        <div className="bg-card p-4 rounded-lg border-2 border-black">
-          <h4 className="font-bold text-center mb-4">3 Phase</h4>
-          <div className="space-y-3">
-            <div className="flex items-center space-x-2">
-              <Input
-                value={settings.threePhaseLow}
-                onChange={(e) => updateSetting("threePhaseLow", e.target.value)}
-                className="bg-input-field text-center font-bold text-black"
-                placeholder="000"
-              />
-              <span className="font-semibold">Low</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Input
-                value={settings.threePhaseHigh}
-                onChange={(e) => updateSetting("threePhaseHigh", e.target.value)}
-                className="bg-input-field text-center font-bold text-black"
-                placeholder="000"
-              />
-              <span className="font-semibold">High</span>
-            </div>
-          </div>
+    <Card className="p-6 bg-settings-panel text-black shadow-panel rounded-3xl">
+      <div className="flex items-center space-x-3 mb-6">
+        <div className="w-10 h-10 bg-settings-alt-panel rounded-full flex items-center justify-center">
+          <Plug className="h-5 w-5 text-white" />
         </div>
-
-        <div className="bg-card p-4 rounded-lg border-2 border-black">
-          <h4 className="font-bold text-center mb-4">2 Phase</h4>
-          <div className="space-y-3">
-            <div className="flex items-center space-x-2">
-              <Input
-                value={settings.twoPhaseLow}
-                onChange={(e) => updateSetting("twoPhaseLow", e.target.value)}
-                className="bg-input-field text-center font-bold text-black"
-                placeholder="000"
-              />
-              <span className="font-semibold">Low</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Input
-                value={settings.twoPhaseHigh}
-                onChange={(e) => updateSetting("twoPhaseHigh", e.target.value)}
-                className="bg-input-field text-center font-bold text-black"
-                placeholder="000"
-              />
-              <span className="font-semibold">High</span>
-            </div>
-          </div>
-        </div>
+        <h3 className="text-xl font-bold">Voltage Settings</h3>
       </div>
+      
+      <div className="bg-card rounded-2xl p-6 shadow-card space-y-6">
+        {/* 3 Phase */}
+        <div className="space-y-4">
+          <Label className="text-lg font-bold">3 Phase</Label>
+          <div className="px-4">
+            <div className="flex justify-between text-sm mb-2">
+              <span>Low</span>
+              <span className="font-bold text-lg">{settings.threePhase.low}</span>
+              <span>High</span>
+            </div>
+            <Slider
+              value={[settings.threePhase.low, settings.threePhase.high]}
+              onValueChange={(values) => updateRange("threePhase", values)}
+              min={300}
+              max={500}
+              step={5}
+              className="w-full"
+              minStepsBetweenThumbs={20}
+            />
+          </div>
+        </div>
 
-      <div className="flex justify-center">
-        <div className="bg-card p-4 rounded-lg border-2 border-black w-full max-w-md">
-          <Label className="text-sm font-semibold mb-2 block text-center">Different Voltage</Label>
-          <div className="flex items-center justify-center space-x-2">
-            <Input
-              value={settings.differentVoltage}
-              onChange={(e) => updateSetting("differentVoltage", e.target.value)}
-              className="bg-input-field text-center font-bold text-black w-20"
-              placeholder="00"
+        {/* 2 Phase */}
+        <div className="space-y-4">
+          <Label className="text-lg font-bold">2 Phase</Label>
+          <div className="px-4">
+            <div className="flex justify-between text-sm mb-2">
+              <span>Low</span>
+              <span className="font-bold text-lg">{settings.twoPhase.low}</span>
+              <span>High</span>
+            </div>
+            <Slider
+              value={[settings.twoPhase.low, settings.twoPhase.high]}
+              onValueChange={(values) => updateRange("twoPhase", values)}
+              min={150}
+              max={300}
+              step={5}
+              className="w-full"
+              minStepsBetweenThumbs={20}
+            />
+          </div>
+        </div>
+
+        {/* Different Voltage */}
+        <div className="space-y-4">
+          <Label className="text-lg font-bold">Different Voltage</Label>
+          <div className="px-4">
+            <div className="text-center mb-2">
+              <span className="font-bold text-2xl">{settings.differentVoltage}V</span>
+            </div>
+            <Slider
+              value={[settings.differentVoltage]}
+              onValueChange={(values) => updateDifferentVoltage(values[0])}
+              min={200}
+              max={500}
+              step={5}
+              className="w-full"
             />
           </div>
         </div>
