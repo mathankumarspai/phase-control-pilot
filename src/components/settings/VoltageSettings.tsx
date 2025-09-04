@@ -126,11 +126,35 @@ export const VoltageSettings = () => {
               value={[settings.threePhase.low, settings.threePhase.high]}
               onValueChange={(values) => updateRange("threePhase", values)}
               min={0}
-              max={500}
+              max={600}
               step={5}
               className="w-full"
               minStepsBetweenThumbs={20}
             />
+            <div className="flex justify-between text-sm text-muted-foreground mt-2">
+              <span>0V</span>
+              <span>600V</span>
+            </div>
+            <div className="flex gap-4 mt-4">
+              <Input
+                type="number"
+                value={settings.threePhase.low}
+                onChange={(e) => updateLowVoltage("threePhase", parseInt(e.target.value) || 0)}
+                className="text-center font-bold"
+                placeholder="Low"
+                min={0}
+                max={600}
+              />
+              <Input
+                type="number"
+                value={settings.threePhase.high}
+                onChange={(e) => updateHighVoltage("threePhase", parseInt(e.target.value) || 0)}
+                className="text-center font-bold"
+                placeholder="High"
+                min={0}
+                max={600}
+              />
+            </div>
           </div>
         </div>
 
@@ -191,11 +215,35 @@ export const VoltageSettings = () => {
               value={[settings.twoPhase.low, settings.twoPhase.high]}
               onValueChange={(values) => updateRange("twoPhase", values)}
               min={0}
-              max={300}
+              max={600}
               step={5}
               className="w-full"
               minStepsBetweenThumbs={20}
             />
+            <div className="flex justify-between text-sm text-muted-foreground mt-2">
+              <span>0V</span>
+              <span>600V</span>
+            </div>
+            <div className="flex gap-4 mt-4">
+              <Input
+                type="number"
+                value={settings.twoPhase.low}
+                onChange={(e) => updateLowVoltage("twoPhase", parseInt(e.target.value) || 0)}
+                className="text-center font-bold"
+                placeholder="Low"
+                min={0}
+                max={600}
+              />
+              <Input
+                type="number"
+                value={settings.twoPhase.high}
+                onChange={(e) => updateHighVoltage("twoPhase", parseInt(e.target.value) || 0)}
+                className="text-center font-bold"
+                placeholder="High"
+                min={0}
+                max={600}
+              />
+            </div>
           </div>
         </div>
 
@@ -221,11 +269,25 @@ export const VoltageSettings = () => {
             <Slider
               value={[settings.differentVoltage]}
               onValueChange={(values) => updateDifferentVoltage(values[0])}
-              min={200}
-              max={500}
+              min={0}
+              max={600}
               step={5}
               className="w-full"
             />
+            <div className="flex justify-between text-sm text-muted-foreground mt-2">
+              <span>0V</span>
+              <span>600V</span>
+            </div>
+            <div className="mt-4">
+              <Input
+                type="number"
+                value={settings.differentVoltage}
+                onChange={(e) => updateDifferentVoltage(parseInt(e.target.value) || 0)}
+                className="text-center font-bold text-lg w-full"
+                min={0}
+                max={600}
+              />
+            </div>
           </div>
         </div>
       </div>

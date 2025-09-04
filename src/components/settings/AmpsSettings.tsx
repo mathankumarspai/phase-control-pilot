@@ -19,9 +19,9 @@ interface AmpsSettingsData {
 
 export const AmpsSettings = () => {
   const [settings, setSettings] = useState<AmpsSettingsData>({
-    ct1: { phase: "3 Phase", low: 20, high: 50 },
-    ct2: { phase: "2 Phase", low: 15, high: 40 },
-    ct3: { phase: "2 Phase", low: 25, high: 150 }
+    ct1: { phase: "3 Phase", low: 10, high: 30 },
+    ct2: { phase: "2 Phase", low: 15, high: 35 },
+    ct3: { phase: "2 Phase", low: 20, high: 40 }
   });
 
   const updateCTSetting = (ct: keyof AmpsSettingsData, field: keyof CTSettings, value: any) => {
@@ -68,20 +68,22 @@ export const AmpsSettings = () => {
             </Select>
           </div>
           
+          <div className="text-center mb-2">
+            <span className="text-2xl font-bold text-foreground">{Math.round((settings.ct1.low + settings.ct1.high) / 2)} A</span>
+          </div>
           <div className="px-4">
-            <div className="flex justify-between text-sm mb-2">
-              <span>Low</span>
-              <span className="font-bold text-lg">{settings.ct1.low}</span>
-              <span>High</span>
-            </div>
             <Slider
               value={[settings.ct1.low, settings.ct1.high]}
               onValueChange={(values) => updateRange("ct1", values)}
-              max={200}
+              max={50}
               step={1}
               className="w-full"
-              minStepsBetweenThumbs={5}
+              minStepsBetweenThumbs={2}
             />
+            <div className="flex justify-between text-sm text-muted-foreground mt-2">
+              <span>0</span>
+              <span>50</span>
+            </div>
           </div>
         </div>
 
@@ -105,20 +107,22 @@ export const AmpsSettings = () => {
             </Select>
           </div>
           
+          <div className="text-center mb-2">
+            <span className="text-2xl font-bold text-foreground">{Math.round((settings.ct2.low + settings.ct2.high) / 2)} A</span>
+          </div>
           <div className="px-4">
-            <div className="flex justify-between text-sm mb-2">
-              <span>Low</span>
-              <span className="font-bold text-lg">{settings.ct2.low}</span>
-              <span>High</span>
-            </div>
             <Slider
               value={[settings.ct2.low, settings.ct2.high]}
               onValueChange={(values) => updateRange("ct2", values)}
-              max={200}
+              max={50}
               step={1}
               className="w-full"
-              minStepsBetweenThumbs={5}
+              minStepsBetweenThumbs={2}
             />
+            <div className="flex justify-between text-sm text-muted-foreground mt-2">
+              <span>0</span>
+              <span>50</span>
+            </div>
           </div>
         </div>
 
@@ -142,20 +146,22 @@ export const AmpsSettings = () => {
             </Select>
           </div>
           
+          <div className="text-center mb-2">
+            <span className="text-2xl font-bold text-foreground">{Math.round((settings.ct3.low + settings.ct3.high) / 2)} A</span>
+          </div>
           <div className="px-4">
-            <div className="flex justify-between text-sm mb-2">
-              <span>Low</span>
-              <span className="font-bold text-lg">{settings.ct3.low}</span>
-              <span>High</span>
-            </div>
             <Slider
               value={[settings.ct3.low, settings.ct3.high]}
               onValueChange={(values) => updateRange("ct3", values)}
-              max={200}
+              max={50}
               step={1}
               className="w-full"
-              minStepsBetweenThumbs={5}
+              minStepsBetweenThumbs={2}
             />
+            <div className="flex justify-between text-sm text-muted-foreground mt-2">
+              <span>0</span>
+              <span>50</span>
+            </div>
           </div>
         </div>
       </div>
