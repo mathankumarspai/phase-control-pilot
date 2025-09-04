@@ -32,7 +32,7 @@ export const Dashboard = () => {
       </header>
 
       {/* Phase Displays - Always in parallel/row */}
-      <div className="grid grid-cols-3 gap-2 mb-6">
+      <div className="grid grid-cols-3 gap-3 mb-6">
         <PhaseDisplay phase="R" color="phase-r" data={phaseData.r} />
         <PhaseDisplay phase="Y" color="phase-y" data={phaseData.y} />
         <PhaseDisplay phase="B" color="phase-b" data={phaseData.b} />
@@ -44,6 +44,21 @@ export const Dashboard = () => {
           isOn={motorStatus} 
           onToggle={setMotorStatus} 
         />
+      </div>
+
+      {/* Additional Settings Panel */}
+      <div className="glass-panel p-6 rounded-2xl mb-6 shadow-glass">
+        <h3 className="text-lg font-bold text-foreground mb-4">Quick Settings</h3>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="glass p-4 rounded-xl text-center">
+            <div className="text-sm font-medium text-muted-foreground mb-1">Motor Settings</div>
+            <div className="text-xs text-muted-foreground">Configure parameters</div>
+          </div>
+          <div className="glass p-4 rounded-xl text-center">
+            <div className="text-sm font-medium text-muted-foreground mb-1">Additional Settings</div>
+            <div className="text-xs text-muted-foreground">Advanced options</div>
+          </div>
+        </div>
       </div>
 
       {/* Additional Switches */}

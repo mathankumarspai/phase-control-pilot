@@ -8,10 +8,11 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 240 5% 96%;
+    /* Base glassmorphism background */
+    --background: 200 20% 98%;
     --foreground: 222.2 84% 4.9%;
 
-    --card: 0 0% 100%;
+    --card: 0 0% 100% / 0.8;
     --card-foreground: 222.2 84% 4.9%;
 
     --popover: 0 0% 100%;
@@ -56,21 +57,25 @@ All colors MUST be HSL.
     --status-inactive: 0 72% 51%;
     --status-warning: 45 93% 47%;
     
-    /* Modern Gradients */
-    --gradient-panel: linear-gradient(135deg, hsl(var(--settings-panel)), hsl(84 81% 48%));
-    --gradient-alt-panel: linear-gradient(135deg, hsl(var(--settings-alt-panel)), hsl(48 96% 57%));
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(240 5% 98%));
-    --gradient-phase-r: linear-gradient(135deg, hsl(0 72% 51%), hsl(0 72% 45%));
-    --gradient-phase-y: linear-gradient(135deg, hsl(45 93% 47%), hsl(45 93% 41%));
-    --gradient-phase-b: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 54%));
-    --gradient-motor: linear-gradient(135deg, hsl(142 71% 45%), hsl(142 71% 39%));
+    /* Glassmorphism Gradients */
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    --gradient-glass-panel: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    --gradient-panel: linear-gradient(135deg, hsl(var(--settings-panel) / 0.9), hsl(84 81% 48% / 0.9));
+    --gradient-alt-panel: linear-gradient(135deg, hsl(var(--settings-alt-panel) / 0.9), hsl(48 96% 57% / 0.9));
+    --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
+    --gradient-phase-r: linear-gradient(135deg, hsl(0 72% 51% / 0.9), hsl(0 72% 45% / 0.9));
+    --gradient-phase-y: linear-gradient(135deg, hsl(45 93% 47% / 0.9), hsl(45 93% 41% / 0.9));
+    --gradient-phase-b: linear-gradient(135deg, hsl(217 91% 60% / 0.9), hsl(217 91% 54% / 0.9));
+    --gradient-motor: linear-gradient(135deg, hsl(142 71% 45% / 0.9), hsl(142 71% 39% / 0.9));
     --gradient-cosmic: linear-gradient(135deg, hsl(var(--cosmic-primary)), hsl(var(--cosmic-secondary)));
     
-    /* Enhanced Shadows */
+    /* Glassmorphism Shadows */
+    --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    --shadow-glass-hover: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
     --shadow-industrial: 0 4px 12px -2px hsl(222.2 84% 4.9% / 0.1);
-    --shadow-panel: 0 2px 8px -1px hsl(222.2 84% 4.9% / 0.15);
+    --shadow-panel: 0 8px 24px -6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
     --shadow-button: 0 2px 4px -1px hsl(222.2 84% 4.9% / 0.2);
-    --shadow-card: 0 4px 16px -4px hsl(222.2 84% 4.9% / 0.12);
+    --shadow-card: 0 8px 24px -6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
     --shadow-gauge: inset 0 2px 4px hsl(222.2 84% 4.9% / 0.1);
     --shadow-glow: 0 0 20px hsl(var(--cosmic-primary) / 0.3);
     
@@ -143,5 +148,23 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background-image: 
+      radial-gradient(at 40% 20%, hsla(217, 91%, 60%, 0.3) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, hsla(270, 100%, 45%, 0.2) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, hsla(45, 93%, 47%, 0.2) 0px, transparent 50%);
+    min-height: 100vh;
+  }
+
+  /* Glassmorphism utilities */
+  .glass {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-panel {
+    background: var(--gradient-glass-panel);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
   }
 }

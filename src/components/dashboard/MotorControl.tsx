@@ -10,27 +10,27 @@ interface MotorControlProps {
 
 export const MotorControl = ({ isOn, onToggle }: MotorControlProps) => {
   return (
-    <Card className="p-8 mb-6 shadow-card bg-gradient-card border-0 hover:shadow-glow transition-all duration-300">
+    <Card className="glass-panel p-8 shadow-glass hover:shadow-glass-hover transition-all duration-300 rounded-2xl border-0 w-full max-w-sm mx-auto">
       <div className="text-center">
-        <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center justify-center space-x-2">
-          <Zap className="h-6 w-6" />
+        <h3 className="text-xl font-bold text-foreground mb-6 flex items-center justify-center space-x-2">
+          <Zap className="h-5 w-5" />
           <span>Motor Control</span>
         </h3>
         
-        {/* Large Motor Button */}
-        <div className="mb-8">
+        {/* Large Motor Button - Centered */}
+        <div className="mb-6 flex justify-center">
           <button
             onClick={() => onToggle(!isOn)}
             className={cn(
-              "w-32 h-32 rounded-full flex items-center justify-center transition-all duration-500 transform hover:scale-105 shadow-card",
+              "w-28 h-28 rounded-full flex items-center justify-center transition-all duration-500 transform hover:scale-105",
               isOn 
                 ? "bg-gradient-motor text-white shadow-glow animate-pulse" 
-                : "bg-gradient-to-br from-muted to-muted/70 text-muted-foreground"
+                : "glass text-muted-foreground hover:shadow-glass-hover"
             )}
           >
             <div className="text-center">
-              <Power className="h-12 w-12 mx-auto mb-2" />
-              <div className="text-sm font-bold">
+              <Power className="h-10 w-10 mx-auto mb-1" />
+              <div className="text-xs font-bold">
                 {isOn ? "ON" : "OFF"}
               </div>
             </div>
@@ -38,34 +38,41 @@ export const MotorControl = ({ isOn, onToggle }: MotorControlProps) => {
         </div>
 
         {/* Toggle Switch */}
-        <div className="flex items-center justify-center space-x-4 mb-6">
+        <div className="flex items-center justify-center mb-6">
           <div className={cn(
-            "flex items-center space-x-3 px-6 py-3 rounded-full transition-all duration-300 shadow-panel",
-            isOn ? "bg-motor-on text-white" : "bg-motor-off text-white"
+            "glass-panel flex items-center space-x-3 px-4 py-2 rounded-full transition-all duration-300",
+            isOn ? "bg-motor-on/20 border-motor-on/30" : "bg-motor-off/20 border-motor-off/30"
           )}>
-            <span className="font-bold text-sm">OFF</span>
+            <span className="font-bold text-xs text-foreground">OFF</span>
             <Switch
               checked={isOn}
               onCheckedChange={onToggle}
-              className="data-[state=checked]:bg-white data-[state=unchecked]:bg-white scale-125"
+              className={cn(
+                "scale-110",
+                isOn 
+                  ? "data-[state=checked]:bg-motor-on" 
+                  : "data-[state=unchecked]:bg-motor-off"
+              )}
             />
-            <span className="font-bold text-sm">ON</span>
+            <span className="font-bold text-xs text-foreground">ON</span>
           </div>
         </div>
 
         {/* Status Display */}
-        <div className="flex items-center justify-center">
+        <div className="flex justify-center">
           <div className={cn(
-            "flex items-center space-x-3 px-8 py-4 rounded-2xl border-2 transition-all duration-300 shadow-card",
+            "glass-panel flex items-center space-x-2 px-4 py-2 rounded-xl transition-all duration-300",
             isOn 
-              ? "bg-gradient-motor text-white border-motor-on shadow-glow" 
-              : "bg-muted/50 text-muted-foreground border-border"
+              ? "border-motor-on/30 bg-motor-on/10" 
+              : "border-motor-off/30 bg-motor-off/10"
           )}>
             <div className={cn(
-              "w-3 h-3 rounded-full",
-              isOn ? "bg-white animate-pulse" : "bg-muted-foreground"
+              "w-2 h-2 rounded-full",
+              isOn ? "bg-motor-on animate-pulse" : "bg-motor-off"
             )} />
-            <span className="text-lg font-bold">Motor {isOn ? "RUNNING" : "STOPPED"}</span>
+            <span className="text-sm font-bold text-foreground">
+              {isOn ? "RUNNING" : "STOPPED"}
+            </span>
           </div>
         </div>
       </div>
