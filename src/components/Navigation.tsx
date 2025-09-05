@@ -1,4 +1,4 @@
-import { Home, Settings, Wrench } from "lucide-react";
+import { Home, Settings, Wrench, Globe } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
@@ -6,6 +6,7 @@ const navigationItems = [
   { path: "/", icon: Home, label: "Dashboard" },
   { path: "/motor-settings", icon: Settings, label: "Motor Settings" },
   { path: "/additional-settings", icon: Wrench, label: "Additional" },
+  { path: "/connectivity", icon: Globe, label: "Connectivity" },
 ];
 
 export const Navigation = () => {
