@@ -2,10 +2,8 @@ import { TimeSettings } from "@/components/settings/TimeSettings";
 import { AmpsSettings } from "@/components/settings/AmpsSettings";
 import { VoltageSettings } from "@/components/settings/VoltageSettings";
 import { ConnectivityIndicators } from "@/components/ConnectivityIndicators";
-
 export const MotorSettings = () => {
-  return (
-    <div className="min-h-screen bg-background pb-20 p-4">
+  return <div className="min-h-screen pb-20 p-4 bg-pink-50">
       <header className="mb-8">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center space-x-3">
@@ -27,6 +25,5 @@ export const MotorSettings = () => {
         <AmpsSettings />
         <VoltageSettings />
       </div>
-    </div>
-  );
+    </div>;
 };
