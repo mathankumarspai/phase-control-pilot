@@ -1,9 +1,7 @@
 import { OtherSettings } from "@/components/settings/OtherSettings";
 import { ConnectivityIndicators } from "@/components/ConnectivityIndicators";
-
 export const AdditionalSettings = () => {
-  return (
-    <div className="min-h-screen bg-background pb-20 p-4">
+  return <div className="min-h-screen pb-20 p-4 bg-pink-50">
       <header className="mb-8">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center space-x-3">
@@ -21,6 +19,5 @@ export const AdditionalSettings = () => {
       </header>
 
       <OtherSettings />
-    </div>
-  );
+    </div>;
 };
