@@ -23,7 +23,7 @@ export const Dashboard = () => {
   const [autoMode, setAutoMode] = useState(false);
   const [oneThirdPhase, setOneThirdPhase] = useState(false);
   const [floatMode, setFloatMode] = useState(false);
-  return <div className="min-h-screen bg-background pb-20 p-4">
+  return <div className="min-h-screen pb-20 p-4 bg-pink-50">
       <header className="mb-8">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center space-x-3">
