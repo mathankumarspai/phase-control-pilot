@@ -9,16 +9,13 @@ import { AdditionalSettings } from "./pages/AdditionalSettings";
 import { Connectivity } from "./pages/Connectivity";
 import { Navigation } from "./components/Navigation";
 import NotFound from "./pages/NotFound";
-
 const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
+const App = () => <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <div className="min-h-screen bg-background">
+        <div className="min-h-screen bg-background rounded-full">
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/motor-settings" element={<MotorSettings />} />
@@ -31,7 +28,5 @@ const App = () => (
         </div>
       </BrowserRouter>
     </TooltipProvider>
-  </QueryClientProvider>
-);
-
+  </QueryClientProvider>;
 export default App;
