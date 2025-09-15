@@ -28,26 +28,26 @@ export const TimerSection = () => {
     const Icon = timer.icon;
     
     return (
-      <Card className="p-6 shadow-card bg-gradient-card border-0 hover:shadow-glow transition-all duration-300">
+      <Card className="glass-panel p-4 shadow-glass hover:shadow-glass-hover transition-all duration-300 rounded-2xl border-0">
         <div className="text-center">
           {/* Timer Icon */}
           <div className={cn(
-            "w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3 transition-all duration-300",
-            timer.isOn ? "bg-timer-bg text-white shadow-glow" : "bg-muted text-muted-foreground"
+            "w-10 h-10 rounded-xl flex items-center justify-center mx-auto mb-3 transition-all duration-300",
+            "bg-white/10 text-white"
           )}>
-            <Icon className="h-6 w-6" />
+            <Icon className="h-5 w-5" />
           </div>
           
-          <h4 className="font-bold text-foreground mb-1">{timer.name}</h4>
+          <h4 className="font-bold text-white text-sm mb-2">{timer.name}</h4>
           
           {/* Digital Time Display */}
           <div className={cn(
-            "p-4 rounded-xl mb-4 transition-all duration-300 shadow-gauge",
+            "p-3 rounded-xl mb-3 transition-all duration-300",
             timer.isOn 
-              ? "bg-timer-bg text-white" 
-              : "bg-muted/50 text-muted-foreground"
+              ? "bg-blue-500/20 border border-blue-500/30 text-white" 
+              : "bg-white/5 text-white/70"
           )}>
-            <div className="text-2xl font-mono font-bold tracking-wider">
+            <div className="text-lg font-mono font-bold tracking-wider">
               {timer.time}
             </div>
           </div>
@@ -55,28 +55,28 @@ export const TimerSection = () => {
           {/* Control Switch */}
           <div className="flex items-center justify-center mb-3">
             <div className={cn(
-              "flex items-center space-x-3 px-4 py-2 rounded-full transition-all duration-300 text-sm font-bold shadow-panel",
-              timer.isOn ? "bg-status-active text-white" : "bg-status-inactive text-white"
+              "flex items-center space-x-2 px-3 py-1.5 rounded-full transition-all duration-300 text-xs font-bold",
+              timer.isOn ? "bg-emerald-500/20 border border-emerald-500/30" : "bg-red-500/20 border border-red-500/30"
             )}>
-              <span className="text-xs">OFF</span>
+              <span className="text-white">OFF</span>
               <Switch
                 checked={timer.isOn}
                 onCheckedChange={() => toggleTimer(index)}
-                className="data-[state=checked]:bg-white data-[state=unchecked]:bg-white"
+                className="scale-75"
               />
-              <span className="text-xs">ON</span>
+              <span className="text-white">ON</span>
             </div>
           </div>
           
           {/* Status Indicator */}
           <div className="flex items-center justify-center space-x-2">
             <div className={cn(
-              "w-2 h-2 rounded-full transition-all duration-300",
-              timer.isOn ? "bg-status-active animate-pulse" : "bg-status-inactive"
+              "w-1.5 h-1.5 rounded-full transition-all duration-300",
+              timer.isOn ? "bg-emerald-400 animate-pulse" : "bg-red-400"
             )} />
             <span className={cn(
               "text-xs font-medium transition-colors duration-300",
-              timer.isOn ? "text-status-active" : "text-status-inactive"
+              timer.isOn ? "text-emerald-400" : "text-red-400"
             )}>
               {timer.isOn ? "RUNNING" : "STOPPED"}
             </span>
@@ -88,11 +88,11 @@ export const TimerSection = () => {
 
   return (
     <div>
-      <h3 className="text-xl font-bold text-foreground mb-6 flex items-center space-x-2">
-        <Clock className="h-6 w-6" />
+      <h3 className="text-lg font-bold text-white mb-4 flex items-center space-x-2">
+        <Clock className="h-5 w-5" />
         <span>Timer Controls</span>
       </h3>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div className="grid grid-cols-3 gap-3">
         {timers.map((timer, index) => (
           <TimerCard key={timer.name} timer={timer} index={index} />
         ))}

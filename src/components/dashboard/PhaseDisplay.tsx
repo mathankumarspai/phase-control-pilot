@@ -44,44 +44,32 @@ export const PhaseDisplay = ({ phase, color, data }: PhaseDisplayProps) => {
   const phaseConfig = getPhaseConfig(color);
 
   return (
-    <Card className="glass-panel p-4 shadow-glass hover:shadow-glass-hover transition-all duration-300 rounded-2xl border-0">
-      {/* Phase Header with glassmorphism */}
-      <div className={cn("p-3 rounded-xl mb-4 text-center text-white shadow-panel backdrop-blur-md", phaseConfig.gradient)}>
-        <h3 className="text-lg font-bold">{phase} Phase</h3>
+    <Card className="glass-panel p-3 shadow-glass hover:shadow-glass-hover transition-all duration-300 rounded-2xl border-0">
+      {/* Phase Header with colored background */}
+      <div className={cn("p-3 rounded-xl mb-3 text-center text-white font-bold text-sm", phaseConfig.gradient)}>
+        <div className="text-lg font-bold">{phase}</div>
+        <div className="text-xs opacity-90">Phase</div>
       </div>
       
-      {/* Digital Values with Icons - Separated Clearly */}
-      <div className="space-y-3">
-        {/* Voltage Display */}
-        <div className="glass p-4 rounded-xl">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 rounded-full bg-yellow-400/20 flex items-center justify-center">
-                <Zap className="h-4 w-4 text-yellow-600" />
-              </div>
-              <span className="text-sm font-medium text-muted-foreground">Voltage</span>
-            </div>
-            <div className="text-right">
-              <div className="text-2xl font-mono font-bold text-foreground">{data.voltage}</div>
-              <div className="text-xs text-muted-foreground">V</div>
-            </div>
-          </div>
+      {/* Voltage Display */}
+      <div className="glass p-3 rounded-xl mb-2">
+        <div className="flex items-center justify-center mb-1">
+          <Zap className="h-4 w-4 text-yellow-400" />
         </div>
+        <div className="text-center">
+          <div className="text-xs text-white/70 mb-1">Voltage</div>
+          <div className="text-lg font-bold text-white">{data.voltage}</div>
+        </div>
+      </div>
 
-        {/* Current Display */}
-        <div className="glass p-4 rounded-xl">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 rounded-full bg-blue-400/20 flex items-center justify-center">
-                <Activity className="h-4 w-4 text-blue-600" />
-              </div>
-              <span className="text-sm font-medium text-muted-foreground">Current</span>
-            </div>
-            <div className="text-right">
-              <div className="text-2xl font-mono font-bold text-foreground">{data.current}</div>
-              <div className="text-xs text-muted-foreground">A</div>
-            </div>
-          </div>
+      {/* Current Display */}
+      <div className="glass p-3 rounded-xl">
+        <div className="flex items-center justify-center mb-1">
+          <Activity className="h-4 w-4 text-blue-400" />
+        </div>
+        <div className="text-center">
+          <div className="text-xs text-white/70 mb-1">Current</div>
+          <div className="text-lg font-bold text-white">{data.current}</div>
         </div>
       </div>
     </Card>
