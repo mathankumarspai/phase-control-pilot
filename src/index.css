@@ -8,76 +8,57 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Base glassmorphism background */
-    --background: 200 20% 98%;
-    --foreground: 222.2 84% 4.9%;
+    /* Motor Control Design System - Electric Blue Primary */
+    --background: 222 84% 5%;
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 100% / 0.8;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100% / 0.08;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 222 84% 5%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary: Electric Blue */
+    --primary: 207 100% 52%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 100% / 0.1;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 100% / 0.05;
+    --muted-foreground: 0 0% 100% / 0.7;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent: Purple-Pink Gradient */
+    --accent: 270 91% 65%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 100% / 0.12;
+    --input: 0 0% 100% / 0.1;
+    --ring: 207 100% 52%;
 
-    /* Industrial IoT Color System */
-    --phase-r: 0 72% 51%;
-    --phase-y: 45 93% 47%;
-    --phase-b: 217 91% 60%;
-    --motor-on: 142 71% 45%;
-    --motor-off: 0 72% 51%;
-    --timer-bg: 217 91% 60%;
-    --settings-panel: 84 81% 44%;
-    --settings-alt-panel: 48 96% 53%;
-    --input-field: 328 73% 77%;
+    /* Motor Control Color System */
+    --electric-blue: 207 100% 52%;
+    --purple-pink: 270 91% 65%;
+    --success-green: 158 64% 52%;
     
-    /* Brand Colors */
-    --cosmic-primary: 270 100% 45%;
-    --cosmic-secondary: 290 100% 65%;
+    /* Background Gradients */
+    --gradient-main: linear-gradient(135deg, #1e1b4b 0%, #312e81 25%, #7c3aed 75%, #ff6fb5 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.05));
+    --gradient-glass-panel: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
+    --gradient-button-primary: linear-gradient(135deg, hsl(207 100% 52%), hsl(207 100% 45%));
+    --gradient-button-save: linear-gradient(135deg, hsl(207 100% 52%), hsl(270 91% 65%));
     
-    /* Status Colors */
-    --status-active: 142 71% 45%;
-    --status-inactive: 0 72% 51%;
-    --status-warning: 45 93% 47%;
-    
-    /* Glassmorphism Gradients */
-    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-    --gradient-glass-panel: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
-    --gradient-panel: linear-gradient(135deg, hsl(var(--settings-panel) / 0.9), hsl(84 81% 48% / 0.9));
-    --gradient-alt-panel: linear-gradient(135deg, hsl(var(--settings-alt-panel) / 0.9), hsl(48 96% 57% / 0.9));
-    --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
-    --gradient-phase-r: linear-gradient(135deg, hsl(0 72% 51% / 0.9), hsl(0 72% 45% / 0.9));
-    --gradient-phase-y: linear-gradient(135deg, hsl(45 93% 47% / 0.9), hsl(45 93% 41% / 0.9));
-    --gradient-phase-b: linear-gradient(135deg, hsl(217 91% 60% / 0.9), hsl(217 91% 54% / 0.9));
-    --gradient-motor: linear-gradient(135deg, hsl(142 71% 45% / 0.9), hsl(142 71% 39% / 0.9));
-    --gradient-cosmic: linear-gradient(135deg, hsl(var(--cosmic-primary)), hsl(var(--cosmic-secondary)));
+    /* Wheel Picker Colors */
+    --wheel-selection: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    --wheel-background: rgba(255, 255, 255, 0.05);
     
     /* Glassmorphism Shadows */
-    --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-    --shadow-glass-hover: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
-    --shadow-industrial: 0 4px 12px -2px hsl(222.2 84% 4.9% / 0.1);
-    --shadow-panel: 0 8px 24px -6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    --shadow-button: 0 2px 4px -1px hsl(222.2 84% 4.9% / 0.2);
-    --shadow-card: 0 8px 24px -6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    --shadow-gauge: inset 0 2px 4px hsl(222.2 84% 4.9% / 0.1);
-    --shadow-glow: 0 0 20px hsl(var(--cosmic-primary) / 0.3);
+    --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    --shadow-button: 0 8px 32px rgba(10, 132, 255, 0.3);
+    --shadow-wheel: inset 0 2px 8px rgba(0, 0, 0, 0.1);
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -147,12 +128,10 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
-    background-image: 
-      radial-gradient(at 40% 20%, hsla(217, 91%, 60%, 0.3) 0px, transparent 50%),
-      radial-gradient(at 80% 0%, hsla(270, 100%, 45%, 0.2) 0px, transparent 50%),
-      radial-gradient(at 0% 50%, hsla(45, 93%, 47%, 0.2) 0px, transparent 50%);
+    @apply text-foreground;
+    background: var(--gradient-main);
     min-height: 100vh;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   }
 
   /* Glassmorphism utilities */
