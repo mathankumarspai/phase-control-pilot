@@ -1,4 +1,4 @@
-import { Home, Settings, Wrench, Globe } from "lucide-react";
+import { Home, BarChart3, Settings, MoreHorizontal, Wifi } from "lucide-react";
 import { NavLink, useParams, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
@@ -12,10 +12,11 @@ export const Navigation = () => {
   }
 
   const navigationItems = [
-    { path: `/device/${deviceId}/dashboard`, icon: Home, label: "Dashboard" },
+    { path: "/dashboard", icon: Home, label: "Home" },
+    { path: `/device/${deviceId}/dashboard`, icon: BarChart3, label: "Dashboard" },
     { path: `/device/${deviceId}/motor-settings`, icon: Settings, label: "Motor Settings" },
-    { path: `/device/${deviceId}/additional-settings`, icon: Wrench, label: "Additional" },
-    { path: `/device/${deviceId}/connectivity`, icon: Globe, label: "Connectivity" },
+    { path: `/device/${deviceId}/additional-settings`, icon: MoreHorizontal, label: "Additional" },
+    { path: `/device/${deviceId}/connectivity`, icon: Wifi, label: "Connectivity" },
   ];
 
   return (
