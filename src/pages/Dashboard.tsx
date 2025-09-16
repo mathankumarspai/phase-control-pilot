@@ -4,6 +4,7 @@ import { MotorControl } from "@/components/dashboard/MotorControl";
 import { AdditionalSwitches } from "@/components/dashboard/AdditionalSwitches";
 import { TimerSection } from "@/components/dashboard/TimerSection";
 import { ConnectivityIndicators } from "@/components/ConnectivityIndicators";
+import { MotorControlFooter } from "@/components/settings/MotorControlFooter";
 
 export const Dashboard = () => {
   const [phaseData] = useState({
@@ -32,7 +33,7 @@ export const Dashboard = () => {
            style={{ width: '390px', height: '844px' }}>
         
         {/* Scrollable Content */}
-        <div className="h-full overflow-y-auto overflow-x-hidden pb-20"
+        <div className="h-full overflow-y-auto overflow-x-hidden pb-28"
              style={{
                scrollbarWidth: 'thin',
                scrollbarColor: 'rgba(255, 255, 255, 0.3) transparent'
@@ -81,6 +82,9 @@ export const Dashboard = () => {
             <TimerSection />
           </div>
         </div>
+        
+        {/* Footer */}
+        <MotorControlFooter />
       </div>
     </div>
   );
